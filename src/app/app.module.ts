@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { environment } from "../environments/environment";
 import { initializeApp } from "firebase/app";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 initializeApp(environment.firebase);
 
@@ -12,7 +13,8 @@ initializeApp(environment.firebase);
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
