@@ -10,6 +10,7 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 export class AppComponent implements OnInit {
   title = 'exp-noti';
   message:any = null;
+  token: string = "";
   constructor() {}
   ngOnInit(): void {
     this.requestPermission();
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
         if (currentToken) {
           console.log("we got the token.....");
           console.log(currentToken);
+          this.token = currentToken;
         } else {
           console.log('No registration token available. Request permission to generate one.');
         }     }).catch((err) => {
