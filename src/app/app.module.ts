@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { environment } from "../environments/environment";
 import { initializeApp } from "firebase/app";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 initializeApp(environment.firebase);
 
@@ -14,7 +15,8 @@ initializeApp(environment.firebase);
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

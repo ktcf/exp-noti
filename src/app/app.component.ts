@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from "../environments/environment";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'exp-noti';
   message:any = null;
   token: string = "";
-  constructor() {}
+  constructor(private _snackBar: MatSnackBar) {}
   ngOnInit(): void {
     this.requestPermission();
     this.listen();
@@ -44,6 +45,8 @@ export class AppComponent implements OnInit {
 
       console.log('Message received. ', payload);
       this.message=payload;
+
+      this._snackBar.open(body, title);
 
       new Notification(title, {body});
     });
