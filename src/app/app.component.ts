@@ -34,8 +34,18 @@ export class AppComponent implements OnInit {
   listen() {
     const messaging = getMessaging();
     onMessage(messaging, (payload) => {
+      let title = payload.notification?.title;
+      let body = payload.notification?.body;
+
+      if (!title || !body) {
+        title = "No notification title";
+        body = "No notification body";
+      }
+
       console.log('Message received. ', payload);
       this.message=payload;
+
+      new Notification(title, {body});
     });
   }
 }
