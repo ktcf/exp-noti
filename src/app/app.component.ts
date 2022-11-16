@@ -48,7 +48,8 @@ export class AppComponent implements OnInit {
 
       this._snackBar.open(body, title);
 
-      new Notification(title, {body});
+      // new Notification(title, {body});
+      new self.Notification(title, { body : body });
     });
   }
 }
