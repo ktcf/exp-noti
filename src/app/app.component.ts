@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
   title = 'exp-noti';
   message:any = null;
   token: string = "";
+  messaging: any = null;
+
   constructor(private _snackBar: MatSnackBar) {}
   ngOnInit(): void {
     this.requestPermission();
@@ -33,8 +35,8 @@ export class AppComponent implements OnInit {
     });
   }
   listen() {
-    const messaging = getMessaging();
-    onMessage(messaging, (payload) => {
+    this.messaging = getMessaging();
+    onMessage(this.messaging, (payload) => {
       let title = payload.notification?.title;
       let body = payload.notification?.body;
 
@@ -48,9 +50,14 @@ export class AppComponent implements OnInit {
 
       this._snackBar.open(body, title);
 
+      this.messaging.registration.showNotification(title, { body });
       // new Notification(title, {body});
-      new self.Notification(title, { body : body });
+      // new self.Notification(title, { body : body });
     });
+  }
+
+  public reqPerm() {
+    this.messaging.requestPermission()
   }
 }
 
