@@ -9,3 +9,11 @@ firebase.initializeApp({
 });
 
 const messaging = firebase.messaging();
+
+messaging.onBackgroundMessage(({ data: { title, body } }) => {
+  return self.registration.showNotification("Hello there", { body: "from background" });
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.waitUntil(clients.openWindow("/test"));
+});
