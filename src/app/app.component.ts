@@ -49,10 +49,7 @@ export class AppComponent implements OnInit {
       this.message=payload;
 
       this._snackBar.open(body, title);
-
-      this.messaging.registration.showNotification(title, { body });
-      // new Notification(title, {body});
-      // new self.Notification(title, { body : body });
+      const notification = new Notification("Hi there!");
     });
   }
 
